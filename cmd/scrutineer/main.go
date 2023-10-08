@@ -4,6 +4,7 @@ import (
 	"errors"
 	"log"
 	"os"
+	"runtime/debug"
 	"scrutineer.tech/scrutineer/internal/cli"
 	"scrutineer.tech/scrutineer/internal/util"
 	"strconv"
@@ -15,7 +16,12 @@ import (
 var Version string
 
 func main() {
-	cliConfig, err := cli.New(util.OrString(os.Getenv("SCRUTINEER_API_ENDPOINT"), "https://api.scrutineer.tech"), util.OrString(Version, "dev"))
+	buildInfoVersion := ""
+	if buildInfo, ok := debug.ReadBuildInfo(); ok {
+		buildInfoVersion = buildInfo.Main.Version
+	}
+
+	cliConfig, err := cli.New(util.OrString(os.Getenv("SCRUTINEER_API_ENDPOINT"), "https://api.scrutineer.tech"), util.OrString(Version, buildInfoVersion, "dev"))
 	if err != nil {
 		log.Fatalf(err.Error())
 	}

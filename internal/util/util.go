@@ -6,11 +6,14 @@ import (
 )
 
 // OrString returns the first non-empty string.
-func OrString(a, b string) string {
-	if a != "" {
-		return a
+func OrString(o ...string) string {
+	for _, s := range o {
+		if s != "" {
+			return s
+		}
 	}
-	return b
+
+	return ""
 }
 
 // GenToken generates a random token of length based on the base58 alphabet without lower case chars.
