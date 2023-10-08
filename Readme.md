@@ -11,12 +11,12 @@ Install
 
 If you use MacOs, the preferred way is to use 
 ```zsh
-brew tap scrutineertech/scrutineer; brew install scrutineer
+brew install scrutineertech/scrutineer/scrutineer
 ```
 
 With brew it is easy to stay up to date.
 
-If you have go installed, you can alternatively use `go install github.com/scrutineertech/scrutineer`.
+If you have go installed, you can alternatively use `go install scrutineer.tech/scrutineer@latest`.
 
 Getting started
 ---------------
