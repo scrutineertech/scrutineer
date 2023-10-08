@@ -16,7 +16,7 @@ brew install scrutineertech/scrutineer/scrutineer
 
 With brew it is easy to stay up to date.
 
-If you have go installed, you can alternatively use `go install scrutineer.tech/scrutineer@latest`.
+If you have go installed, you can alternatively use `go install scrutineer.tech/scrutineer/cmd/scrutineer@latest`.
 
 Getting started
 ---------------
