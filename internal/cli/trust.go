@@ -11,7 +11,7 @@ import (
 	"text/tabwriter"
 	"time"
 
-	"scrutineer/internal/model"
+	"scrutineer.tech/scrutineer/internal/model"
 )
 
 func (c Cli) Whoami() error {

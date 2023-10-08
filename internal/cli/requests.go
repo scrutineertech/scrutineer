@@ -7,7 +7,7 @@ import (
 )
 
 func (c Cli) userAgent() string {
-	return fmt.Sprintf("scrutineer/%s", c.version)
+	return fmt.Sprintf("scrutineer/%s", c.Version)
 }
 
 func (c Cli) getRequest(urlPath string) (*http.Request, error) {

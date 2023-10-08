@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"os"
 	"path"
-	"scrutineer/internal/model"
+	"scrutineer.tech/scrutineer/internal/model"
 )
 
 func (c Cli) GithubAuth() error {

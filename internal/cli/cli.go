@@ -13,12 +13,12 @@ import (
 	"os"
 	"time"
 
-	"scrutineer/internal/model"
+	"scrutineer.tech/scrutineer/internal/model"
 )
 
 type Cli struct {
 	serverUrl *url.URL
-	version   string
+	Version   string
 }
 
 func New(serverUrl, version string) (Cli, error) {
@@ -28,7 +28,7 @@ func New(serverUrl, version string) (Cli, error) {
 	}
 	return Cli{
 		serverUrl: u,
-		version:   version,
+		Version:   version,
 	}, nil
 }
 

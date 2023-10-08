@@ -45,7 +45,11 @@ Trust relationships
 -------------------
 
 The heart of Scrutineer's verification logic is a so called Realm.
-You define your own Realm.
+You define your own Realm. View it with
+
+```bash
+scrutineer realm
+```
 
 You can set a start and an end time for a trust relationship.
 By default, you trust a given user from now to 365 days from now.

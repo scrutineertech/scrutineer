@@ -4,12 +4,12 @@ import (
 	"errors"
 	"log"
 	"os"
-	"scrutineer/internal/util"
+	"scrutineer.tech/scrutineer/internal/cli"
+	"scrutineer.tech/scrutineer/internal/util"
 	"strconv"
 	"time"
 
 	urfave "github.com/urfave/cli/v2"
-	"scrutineer/internal/cli"
 )
 
 var Version string
@@ -38,6 +38,9 @@ func main() {
 
 	// Scrutineer specific calls
 	app := &urfave.App{
+		Name:    "scrutineer",
+		Usage:   "Sign and verify git commits",
+		Version: cliConfig.Version,
 		Commands: []*urfave.Command{
 			{
 				Name: "login",
@@ -66,7 +69,7 @@ func main() {
 					return cliConfig.AuthCacheExists()
 				},
 				Name:  "realm",
-				Usage: "get realm",
+				Usage: "show realm",
 				Action: func(context *urfave.Context) error {
 					return cliConfig.GetRealm()
 				},
