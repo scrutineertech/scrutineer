@@ -13,6 +13,8 @@ import (
 )
 
 func (c Cli) GithubAuth() error {
+	fmt.Println("If you log in, you agree to the Terms of Service (https://scrutineer.tech/Terms.html)")
+
 	flow := &oauth.Flow{
 		Host:     oauth.GitHubHost("https://github.com"),
 		ClientID: "9d59865c95e8efb2c29d", // scrutineertech Scrutineer app
