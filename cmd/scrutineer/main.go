@@ -64,6 +64,15 @@ func main() {
 				Before: func(context *urfave.Context) error {
 					return cliConfig.AuthCacheExists()
 				},
+				Name: "unregister",
+				Action: func(context *urfave.Context) error {
+					return cliConfig.DeleteMe()
+				},
+			},
+			{
+				Before: func(context *urfave.Context) error {
+					return cliConfig.AuthCacheExists()
+				},
 				Name:  "whoami",
 				Usage: "returns your logged in user id",
 				Action: func(context *urfave.Context) error {

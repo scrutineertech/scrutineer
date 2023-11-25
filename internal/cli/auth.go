@@ -54,7 +54,7 @@ func (c Cli) GithubAuth() error {
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		return errors.New("status code not OK")
+		return errors.New("server error. Please try again later")
 	}
 
 	loginResp := model.LoginResponse{}
@@ -161,6 +161,41 @@ func (c Cli) Logout() error {
 
 	_ = os.Remove(getAuthPath())
 	fmt.Println("You are logged out now.")
+	return nil
+}
+
+func (c Cli) DeleteMe() error {
+	auth, err := c.getAuthCache()
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("Are you sure you want to delete your account %s? Type 'delete' to confirm.\n", auth.Username)
+	var input string
+	_, err = fmt.Scanln(&input)
+	if err != nil {
+		return err
+	}
+	if input != "delete" {
+		return errors.New("aborting")
+	}
+
+	req, err := c.deleteRequest("auth/me", nil)
+	if err != nil {
+		return err
+	}
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	if resp.StatusCode != http.StatusNoContent {
+		return errors.New("Something went wrong. Please try again later.")
+	}
+
+	_ = os.Remove(getAuthPath())
+	fmt.Println("Your account was deleted")
 	return nil
 }
 
